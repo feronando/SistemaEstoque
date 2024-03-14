@@ -2,6 +2,9 @@ package br.ufrn.imd.sistemaestoque.domain;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "Loja")
 public class Loja {
@@ -16,12 +19,16 @@ public class Loja {
     @Column(name = "endereco")
     private String endereco;
 
+    @OneToMany(mappedBy = "Loja")
+    private Set<Estoque> estoques;
+
     public Loja() { /*empty*/ }
 
-    public Loja(Integer idLoja, String nome, String endereco) {
+    public Loja(Integer idLoja, String nome, String endereco, Set<Estoque> estoques) {
         this.idLoja = idLoja;
         this.nome = nome;
         this.endereco = endereco;
+        this.estoques = estoques;
     }
 
     public Integer getIdLoja() {
@@ -43,4 +50,8 @@ public class Loja {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
+
+    public Set<Estoque> getEstoques() { return estoques; }
+
+    public void setEstoques(Set<Estoque> estoques) { this.estoques = estoques; }
 }
