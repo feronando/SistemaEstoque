@@ -4,45 +4,43 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "Estoque")
 public class Estoque {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_estoque")
-    private Integer idEstoque;
+    private Long idEstoque;
 
     @ManyToOne
     @JoinColumn(name = "id_loja")
-    private Loja id_loja;
+    private Loja idLoja;
 
     @OneToMany(mappedBy = "Estoque")
-    private Set<ProdutoEstoque> produto_estoque;
+    private Set<ProdutoEstoque> produtoEstoque;
 
     public Estoque() { /*empty*/ }
 
-    public Estoque(Integer idEstoque, Loja id_loja, Set<ProdutoEstoque> produto_estoque) {
-        this.idEstoque = idEstoque;
-        this.id_loja = id_loja;
-        this.produto_estoque = produto_estoque;
+    public Estoque(Loja idLoja, Set<ProdutoEstoque> produtoEstoque) {
+        this.idLoja = idLoja;
+        this.produtoEstoque = produtoEstoque;
     }
 
-    public Integer getIdEstoque() {
+    public Long getIdEstoque() {
         return idEstoque;
     }
 
-    public Loja getId_loja() {
-        return id_loja;
+    public Loja getIdLoja() {
+        return idLoja;
     }
 
-    public void setId_loja(Loja id_loja) {
-        this.id_loja = id_loja;
+    public void setIdLoja(Loja idLoja) {
+        this.idLoja = idLoja;
     }
 
-    public Set<ProdutoEstoque> getProduto_estoque() {
-        return produto_estoque;
+    public Set<ProdutoEstoque> getProdutoEstoque() {
+        return produtoEstoque;
     }
 
-    public void setProduto_estoque(Set<ProdutoEstoque> produto_estoque) {
-        this.produto_estoque = produto_estoque;
+    public void setProdutoEstoque(Set<ProdutoEstoque> produtoEstoque) {
+        this.produtoEstoque = produtoEstoque;
     }
 }

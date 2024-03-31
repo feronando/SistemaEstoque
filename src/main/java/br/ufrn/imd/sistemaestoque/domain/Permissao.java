@@ -4,12 +4,11 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "Permissao")
 public class Permissao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_permissao")
-    private Integer idPermissao;
+    private Long idPermissao;
 
     @Column(name = "descricao")
     private String descricao;
@@ -19,13 +18,12 @@ public class Permissao {
 
     public Permissao()  { /*empty*/ }
 
-    public Permissao(Integer idPermissao, String descricao, Set<Cargo> cargos) {
-        this.idPermissao = idPermissao;
+    public Permissao(String descricao, Set<Cargo> cargos) {
         this.descricao = descricao;
         this.cargos = cargos;
     }
 
-    public Integer getIdPermissao() {
+    public Long getIdPermissao() {
         return idPermissao;
     }
 

@@ -1,15 +1,16 @@
 package br.ufrn.imd.sistemaestoque.domain;
 
 import jakarta.persistence.*;
+
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Cargo")
 public class Cargo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_cargo")
-    private Integer idCargo;
+    private Long idCargo;
 
     @Column(name = "nome_cargo")
     private String nomeCargo;
@@ -26,14 +27,14 @@ public class Cargo {
 
     public Cargo() { /*empty*/ }
 
-    public Cargo(Integer idCargo, String nomeCargo, Set<Usuario> usuarios, Set<Permissao> permissoes) {
+    public Cargo(Long idCargo, String nomeCargo, Set<Usuario> usuarios, Set<Permissao> permissoes) {
         this.idCargo = idCargo;
         this.nomeCargo = nomeCargo;
         this.usuarios = usuarios;
         this.permissoes = permissoes;
     }
 
-    public Integer getIdCargo() {
+    public Long getIdCargo() {
         return idCargo;
     }
 

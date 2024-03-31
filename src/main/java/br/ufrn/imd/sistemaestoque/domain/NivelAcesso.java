@@ -4,12 +4,11 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "NivelAcesso")
 public class NivelAcesso {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_nivel_acesso")
-    private Integer idNivelAcesso;
+    private Long idNivelAcesso;
 
     @Column(name = "descricao")
     private String descricao;
@@ -19,13 +18,12 @@ public class NivelAcesso {
 
     public NivelAcesso()  { /*empty*/ }
 
-    public NivelAcesso(Integer idNivelAcesso, String descricao, Set<Usuario> usuarios) {
-        this.idNivelAcesso = idNivelAcesso;
+    public NivelAcesso(String descricao, Set<Usuario> usuarios) {
         this.descricao = descricao;
         this.usuarios = usuarios;
     }
 
-    public Integer getIdNivelAcesso() {
+    public Long getIdNivelAcesso() {
         return idNivelAcesso;
     }
 

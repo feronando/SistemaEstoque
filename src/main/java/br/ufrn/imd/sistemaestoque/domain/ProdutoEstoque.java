@@ -6,12 +6,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Produto_Estoque")
 public class ProdutoEstoque {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_produto_estoque")
-    private Integer idProdutoEstoque;
+    private Long idProdutoEstoque;
 
     @Column(name = "qtd_produto")
     private Integer qtdProduto;
@@ -29,15 +28,14 @@ public class ProdutoEstoque {
 
     public ProdutoEstoque() { /*empty*/ }
 
-    public ProdutoEstoque(Integer idProdutoEstoque, Integer qtdProduto, Produto produto, Estoque estoque, Set<Operacao> operacoes) {
-        this.idProdutoEstoque = idProdutoEstoque;
+    public ProdutoEstoque(Integer qtdProduto, Produto produto, Estoque estoque, Set<Operacao> operacoes) {
         this.qtdProduto = qtdProduto;
         this.produto = produto;
         this.estoque = estoque;
         this.operacoes = operacoes;
     }
 
-    public Integer getIdProdutoEstoque() {
+    public Long getIdProdutoEstoque() {
         return idProdutoEstoque;
     }
 

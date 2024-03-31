@@ -6,12 +6,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Produto")
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_produto")
-    private Integer idProduto;
+    private Long idProduto;
 
     @Column(name = "nome")
     private String nome;
@@ -26,20 +25,19 @@ public class Produto {
     private Double precoVenda;
 
     @OneToMany(mappedBy = "Produto")
-    private Set<ProdutoEstoque> produto_estoque = new HashSet<>();
+    private Set<ProdutoEstoque> produtoEstoque = new HashSet<>();
 
     public Produto() { /*empty*/ }
 
-    public Produto(Integer idProduto, String nome, String descricao, Double precoCusto, Double precoVenda, Set<ProdutoEstoque> produto_estoque) {
-        this.idProduto = idProduto;
+    public Produto(String nome, String descricao, Double precoCusto, Double precoVenda, Set<ProdutoEstoque> produtoEstoque) {
         this.nome = nome;
         this.descricao = descricao;
         this.precoCusto = precoCusto;
         this.precoVenda = precoVenda;
-        this.produto_estoque = produto_estoque;
+        this.produtoEstoque = produtoEstoque;
     }
 
-    public Integer getidProduto() {
+    public Long getidProduto() {
         return idProduto;
     }
 
@@ -75,7 +73,7 @@ public class Produto {
         this.precoVenda = precoVenda;
     }
 
-    public Set<ProdutoEstoque> getProduto_estoque() { return produto_estoque; }
+    public Set<ProdutoEstoque> getProdutoEstoque() { return produtoEstoque; }
 
-    public void setProduto_estoque(Set<ProdutoEstoque> produto_estoque) { this.produto_estoque = produto_estoque; }
+    public void setProdutoEstoque(Set<ProdutoEstoque> produtoEstoque) { this.produtoEstoque = produtoEstoque; }
 }

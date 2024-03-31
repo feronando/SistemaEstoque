@@ -5,12 +5,11 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Operacao")
 public class Operacao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_operacao")
-    private Integer idOperacao;
+    private Long idOperacao;
 
     @Column(name = "data_operacao")
     private Date dataOperacao;
@@ -24,7 +23,7 @@ public class Operacao {
 
     @ManyToOne
     @JoinColumn(name = "id_produto_estoque")
-    private ProdutoEstoque produto_estoque;
+    private ProdutoEstoque produtoEstoque;
 
     @ManyToOne
     @JoinColumn(name = "id_tipo")
@@ -32,16 +31,15 @@ public class Operacao {
 
     public Operacao()  { /*empty*/ }
 
-    public Operacao(Integer idOperacao, Date dataOperacao, Integer qtdAlterada, Usuario usuario, ProdutoEstoque produto_estoque, TipoOperacao tipo) {
-        this.idOperacao = idOperacao;
+    public Operacao(Date dataOperacao, Integer qtdAlterada, Usuario usuario, ProdutoEstoque produtoEstoque, TipoOperacao tipo) {
         this.dataOperacao = dataOperacao;
         this.qtdAlterada = qtdAlterada;
         this.usuario = usuario;
-        this.produto_estoque = produto_estoque;
+        this.produtoEstoque = produtoEstoque;
         this.tipo = tipo;
     }
 
-    public Integer getIdOperacao() {
+    public Long getIdOperacao() {
         return idOperacao;
     }
 
@@ -69,12 +67,12 @@ public class Operacao {
         this.usuario = usuario;
     }
 
-    public ProdutoEstoque getProduto_estoque() {
-        return produto_estoque;
+    public ProdutoEstoque getProdutoEstoque() {
+        return produtoEstoque;
     }
 
-    public void setProduto_estoque(ProdutoEstoque produto_estoque) {
-        this.produto_estoque = produto_estoque;
+    public void setProdutoEstoque(ProdutoEstoque produtoEstoque) {
+        this.produtoEstoque = produtoEstoque;
     }
 
     public TipoOperacao getTipo() {

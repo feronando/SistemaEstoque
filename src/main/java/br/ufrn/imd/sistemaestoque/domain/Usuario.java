@@ -6,12 +6,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Usuario")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_usuario")
-    private Integer idUsuario;
+    private Long idUsuario;
 
     @Column(name = "nome")
     private String nome;
@@ -38,8 +37,7 @@ public class Usuario {
 
     public Usuario()  { /*empty*/ }
 
-    public Usuario(Integer idUsuario, String nome, String email, String senha, Set<Operacao> operacoes, NivelAcesso nivelAcesso, Set<Cargo> cargos) {
-        this.idUsuario = idUsuario;
+    public Usuario(String nome, String email, String senha, Set<Operacao> operacoes, NivelAcesso nivelAcesso, Set<Cargo> cargos) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -48,7 +46,7 @@ public class Usuario {
         this.cargos = cargos;
     }
 
-    public Integer getIdUsuario() {
+    public Long getIdUsuario() {
         return idUsuario;
     }
 
